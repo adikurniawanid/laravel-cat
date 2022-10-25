@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BankSoalController;
+use App\Http\Controllers\JadwalTesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/auth/login/admin', function () {
+    return view('auth/login-admin', [
+        "title" => "Login Admin"
+    ]);
+});
+
 Route::get('/auth/login', function () {
-    return view('auth/login');
+    return view('auth/login', [
+        "title" => "Login"
+    ]);
 });
 
 Route::get('/admin', function () {
@@ -23,17 +33,9 @@ Route::get('/admin', function () {
     ]);
 });
 
-Route::get('/admin/bank-soal', function () {
-    return view('admin/bank-soal', [
-        "title" => "Bank Soal"
-    ]);
-});
+Route::get('/admin/bank-soal', [BankSoalController::class, 'index']);
 
-Route::get('/admin/jadwal-tes', function () {
-    return view('admin/jadwal-tes', [
-        "title" => "Jadwal Tes"
-    ]);
-});
+Route::get('/admin/jadwal-tes', [JadwalTesController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');

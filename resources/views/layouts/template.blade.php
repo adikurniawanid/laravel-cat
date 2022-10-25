@@ -20,4 +20,5 @@
     <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
+    @include('modal.logout')
     @include('layouts.tail')

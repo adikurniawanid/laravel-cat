@@ -15,6 +15,11 @@ class CreateTesTable extends Migration
     {
         Schema::create('tes', function (Blueprint $table) {
             $table->id();
+            $table->text("nama");
+            $table->bigInteger("kategoriId");
+            $table->bigInteger("kelasId");
+            $table->dateTimeTz("waktuMulai");
+            $table->dateTimeTz("waktuSelesai");
             $table->timestamps();
         });
     }

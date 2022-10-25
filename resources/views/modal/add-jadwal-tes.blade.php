@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalAddMahasiswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="modalAddData" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -12,6 +12,11 @@
                 <form method="POST" enctype="multipart/form-data" action="">
                     <?= csrf_field() ?>
                     <div class="form-group">
+                        <label>Nama</label>
+                        <input autocomplete="off" class="form-control" required type="text" name="nama"
+                            placeholder="Masukan Nama Sesi" />
+                    </div>
+                    <div class="form-group">
                         <label>Waktu Mulai</label>
                         <input autocomplete="off" class="form-control" required type="datetime-local"
                             name="startTime" />
@@ -22,11 +27,23 @@
                             name="durasi" placeholder="Masukkan Durasi Tes (Menit)..." />
                     </div>
                     <div class="form-group">
+                        <label>Kelas</label>
+                        <select class="custom-select" id="soalId" name="soalId" required>
+                            <option value="">Pilih Kelas</option>
+                            @foreach ($kelas as $element)
+                                <option value="{{ $element['id'] }}">{{ $element['nama'] }} - {{ $element['kelompok'] }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Soal</label>
                         <select class="custom-select" id="soalId" name="soalId" required>
                             <option value="">Pilih Soal</option>
 
-                            <option value=""></option>
+                            @foreach ($kategori as $element)
+                                <option value="{{ $element['id'] }}">{{ $element['nama'] }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="modal-footer">

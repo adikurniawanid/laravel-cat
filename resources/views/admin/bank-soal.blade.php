@@ -8,7 +8,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">{{ $title }}</h6>
             </div>
             <div class="card-body">
-                <a data-toggle="modal" data-target="#modalAddMahasiswa" class="btn btn-primary btn-icon-split mb-3">
+                <a data-toggle="modal" data-target="#modalAddData" class="btn btn-primary btn-icon-split mb-3">
                     <span class="icon text-white-50">
                         <i class="fa fa-plus"></i>
                     </span>
