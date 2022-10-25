@@ -13,6 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/auth/login', function () {
+    return view('auth/login');
+});
+
+Route::get('/admin', function () {
+    return view('admin/bank-soal', [
+        "title" => "Bank Soal"
+    ]);
+});
+
+Route::get('/admin/bank-soal', function () {
+    return view('admin/bank-soal', [
+        "title" => "Bank Soal"
+    ]);
+});
+
+Route::get('/admin/jadwal-tes', function () {
+    return view('admin/jadwal-tes', [
+        "title" => "Jadwal Tes"
+    ]);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
