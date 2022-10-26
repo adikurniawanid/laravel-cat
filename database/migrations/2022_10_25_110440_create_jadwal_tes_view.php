@@ -22,7 +22,7 @@ t.nama as 'nama',
        k.nama as soal, CONCAT(k2.nama, ' - ' , k2.kelompok) as kelas
 FROM tes t
 INNER JOIN kategori k on k.id = t.kategoriId
-INNER JOIN kelas k2 on k2.id");
+INNER JOIN kelas k2 on k2.id = t.kelasId");
     }
 
     /**

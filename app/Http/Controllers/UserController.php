@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Kategori;
+use App\Models\Kelas;
 
 class UserController extends Controller
 {
@@ -11,6 +13,8 @@ class UserController extends Controller
 
         return view('user/tes-tersedia', [
             "title" => "Tes Yang Tersedia",
+            "tes" =>
+            DB::table('jadwal_tes_view')->get(),
         ]);
     }
 
@@ -18,10 +22,8 @@ class UserController extends Controller
     {
         return view('user/jadwal-tes', [
             "title" => "Jadwal Tes Pengguna",
-            // "kategori" => Kategori::all(),
-            // "kelas" => Kelas::all(),
-            // "tes" =>
-            // DB::table('jadwal_tes_view')->get(),
+            "tes" =>
+            DB::table('jadwal_tes_view')->get(),
         ]);
     }
 }

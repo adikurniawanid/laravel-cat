@@ -36,7 +36,22 @@
                                     <td>{{ $element->pukul }}</td>
                                     <td>{{ $element->soal }}</td>
                                     <td>{{ $element->kelas }}</td>
-                                    <td>hapus | edit</td>
+                                    <td>
+                                        <form action="/admin/jadwal/<?= $element->id ?>" method="POST" class="d-inline">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="PUT">
+                                            <input type="hidden" name="id" value="<?= $element->id ?>">
+                                            <button type="submit" class="btn btn-success btn-sm" title="Edit"><i
+                                                    class="fas fa-edit "></i></button>
+                                        </form>
+                                        <form action="/admin/jadwal/<?= $element->id ?>" method="POST" class="d-inline">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete"
+                                                onclick="return confirm('Apakah anda yakin ingin menghapus mahasiswa <?= $element->id ?> ?')"><i
+                                                    class="fas fa-trash "></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
 

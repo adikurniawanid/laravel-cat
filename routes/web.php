@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\JadwalController;
+use App\Http\Controllers\Admin\SoalController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BankSoalController;
-use App\Http\Controllers\JadwalTesController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -17,21 +18,17 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/auth/login/admin', function () {
-    return view('auth/login-admin', [
-        "title" => "Login Admin"
-    ]);
-});
+// Auth
+Route::get('/auth/login', [LoginController::class, 'index']);
+Route::get('/auth/login/admin', [LoginController::class, 'indexAdmin']);
+Route::get('/auth/register', [RegisterController::class, 'index']);
 
-Route::get('/auth/login', function () {
-    return view('auth/login', [
-        "title" => "Login"
-    ]);
-});
+// Admin
+Route::get('/admin', [SoalController::class, 'index']);
+Route::get('/admin/jadwal', [JadwalController::class, 'index']);
+Route::post('/admin/jadwal', [JadwalController::class, 'add']);
+// Route::delete('/admin/jadwal', [AdminController::class, 'deleteJadwal']);
 
-Route::get('/admin', [AdminController::class, 'index']);
-
-Route::get('/admin/jadwal', [AdminController::class, 'jadwal']);
-
+// User
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/jadwal', [UserController::class, 'jadwal']);

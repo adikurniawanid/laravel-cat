@@ -9,26 +9,42 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data" action="">
-                    <?= csrf_field() ?>
+                <form method="POST" enctype="multipart/form-data" action="/admin/jadwal">
+                    @csrf
                     <div class="form-group">
                         <label>Nama</label>
-                        <input autocomplete="off" class="form-control" required type="text" name="nama"
-                            placeholder="Masukan Nama Sesi" />
+                        <input autocomplete="off"
+                            class="form-control @error('nama')
+                            is-invalid
+                        @enderror"
+                            required type="text" name="nama" id="nama" placeholder="Masukan Nama Sesi"
+                            value="{{ old('nama') }}" />
                     </div>
                     <div class="form-group">
                         <label>Waktu Mulai</label>
-                        <input autocomplete="off" class="form-control" required type="datetime-local"
-                            name="startTime" />
+                        <input autocomplete="off"
+                            class="form-control @error('nama')
+                            is-invalid
+                        @enderror"
+                            required type="datetime-local" name="waktuMulai" id="waktuMulai"
+                            value="{{ old('waktuMulai') }}" />
                     </div>
                     <div class="form-group">
                         <label>Durasi (Menit)</label>
-                        <input min="0" autocomplete="off" class="form-control" required type="number"
-                            name="durasi" placeholder="Masukkan Durasi Tes (Menit)..." />
+                        <input min="0" autocomplete="off"
+                            class="form-control @error('durasi')
+                            is-invalid
+                        @enderror"
+                            required type="number" name="durasi" id="durasi"
+                            placeholder="Masukkan Durasi Tes (Menit)..." value="{{ old('durasi') }}" />
                     </div>
                     <div class="form-group">
                         <label>Kelas</label>
-                        <select class="custom-select" id="soalId" name="soalId" required>
+                        <select
+                            class="custom-select @error('kelasId')
+                            is-invalid
+                        @enderror"
+                            id="kelasId" name="kelasId" required>
                             <option value="">Pilih Kelas</option>
                             @foreach ($kelas as $element)
                                 <option value="{{ $element['id'] }}">{{ $element['nama'] }} - {{ $element['kelompok'] }}
@@ -37,9 +53,13 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Soal</label>
-                        <select class="custom-select" id="soalId" name="soalId" required>
-                            <option value="">Pilih Soal</option>
+                        <label>Kategori</label>
+                        <select class="custom-select"
+                            @error('kategoriId')
+                            is-invalid
+                        @enderror
+                            id="kategoriId" name="kategoriId" required>
+                            <option value="">Pilih Kategori Soal</option>
 
                             @foreach ($kategori as $element)
                                 <option value="{{ $element['id'] }}">{{ $element['nama'] }}</option>

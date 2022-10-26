@@ -33,7 +33,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="/user">Daftar Akun</a>
+                                        <a class="small" href="/auth/register">Daftar Akun</a>
                                     </div>
                                 </div>
                             </div>
