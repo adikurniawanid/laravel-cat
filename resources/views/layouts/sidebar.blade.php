@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            <i class="fas fa-book-open"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Kuis Online</div>
     </a>
@@ -14,15 +14,28 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item {{ $title === 'Bank Soal' ? 'active' : '' }}">
-        <a class="nav-link " href="/admin/bank-soal">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+        <a class="nav-link " href="/admin">
+            <i class="fas fa-fw fa-database"></i>
             <span>Bank Soal</span></a>
     </li>
 
     <li class="nav-item {{ $title === 'Jadwal Tes' ? 'active' : '' }}">
-        <a class="nav-link" href="/admin/jadwal-tes">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+        <a class="nav-link" href="/admin/jadwal">
+            <i class="fas fa-fw fa-calendar"></i>
             <span>Jadwal Tes</span></a>
+    </li>
+
+    <li class="nav-item {{ $title === 'Tes Yang Tersedia' ? 'active' : '' }}">
+        <a class="nav-link" href="/user/">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Tes Yang Tersedia</span></a>
+    </li>
+
+
+    <li class="nav-item {{ $title === 'Jadwal Tes Pengguna' ? 'active' : '' }}">
+        <a class="nav-link" href="/user/jadwal">
+            <i class="fas fa-fw fa-calendar"></i>
+            <span>Jadwal Tes Pengguna</span></a>
     </li>
 
     <!-- Divider -->

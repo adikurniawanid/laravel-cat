@@ -7,11 +7,20 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Kategori;
 use App\Models\Kelas;
 
-class JadwalTesController extends Controller
+class AdminController extends Controller
 {
+
     public function index()
     {
 
+        return view('admin/bank-soal', [
+            "title" => "Bank Soal",
+            "kelas" => Kelas::all(),
+        ]);
+    }
+
+    public function jadwal()
+    {
         return view('admin/jadwal-tes', [
             "title" => "Jadwal Tes",
             "kategori" => Kategori::all(),

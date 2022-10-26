@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankSoalController;
 use App\Http\Controllers\JadwalTesController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,16 +29,9 @@ Route::get('/auth/login', function () {
     ]);
 });
 
-Route::get('/admin', function () {
-    return view('admin/bank-soal', [
-        "title" => "Bank Soal"
-    ]);
-});
+Route::get('/admin', [AdminController::class, 'index']);
 
-Route::get('/admin/bank-soal', [BankSoalController::class, 'index']);
+Route::get('/admin/jadwal', [AdminController::class, 'jadwal']);
 
-Route::get('/admin/jadwal-tes', [JadwalTesController::class, 'index']);
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/jadwal', [UserController::class, 'jadwal']);
