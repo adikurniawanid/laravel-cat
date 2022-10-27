@@ -13,28 +13,63 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Pendaftaran Akun</h1>
                                 </div>
-                                <form class="user">
+                                <form method="POST" enctype="multipart/form-data" action="/auth/register"
+                                    class="user">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="nama"
-                                            placeholder="Masukan Nama Lengkap...">
+                                        <input type="text"
+                                            class="form-control form-control-user @error('nama')
+                                            is-invalid
+                                        @enderror"
+                                            value="{{ old('nama') }}" id="nama" name="nama"
+                                            placeholder="Masukan Nama Lengkap..." required>
                                     </div>
 
+
+
+                                    @error('nama')
+                                        <div class="invalid-feedback d-block mb-3">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="username"
-                                            placeholder="Masukan Username...">
+                                        <input type="text"
+                                            class="form-control form-control-user @error('username')
+                                            is-invalid
+                                        @enderror"
+                                            id="username" name="username" placeholder="Masukan Username..." required>
                                     </div>
+                                    @error('username')
+                                        <div class="invalid-feedback d-block mb-3">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password"
-                                            placeholder="Masukan Password...">
+                                        <input type="password"
+                                            class="form-control form-control-user @error('password')
+                                            is-invalid
+                                        @enderror"
+                                            id="password" name="password" placeholder="Masukan Password..." required>
                                     </div>
+                                    @error('password')
+                                        <div class="invalid-feedback d-block mb-3">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="nama"
-                                            placeholder="Masukan Nama...">
+                                        <input type="email"
+                                            class="form-control form-control-user @error('email')
+                                            is-invalid
+                                        @enderror"
+                                            id="email" name="email" placeholder="Masukan Alamat E-Mail..."
+                                            required>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="email"
-                                            placeholder="Masukan Alamat E-Mail...">
-                                    </div>
+                                    @error('email')
+                                        <div class="invalid-feedback d-block mb-3">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
 
                                     <div class="form-group">
                                         <label>Kelas</label>
@@ -45,15 +80,30 @@
                                             id="kelasId" name="kelasId" required>
                                             <option value="">Pilih Kelas</option>
                                             @foreach ($kelas as $element)
-                                                <option value="{{ $element['id'] }}">{{ $element['nama'] }} -
-                                                    {{ $element['kelompok'] }}
-                                                </option>
+                                                @if (old('kelasId') == $element->id)
+                                                    <option value="{{ $element['id'] }}" selected>{{ $element['nama'] }}
+                                                        -
+                                                        {{ $element['kelompok'] }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $element['id'] }}">
+                                                        {{ $element['nama'] }} -
+                                                        {{ $element['kelompok'] }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
-                                    <a href="/auth/login" class="btn btn-primary btn-user btn-block">
-                                        Daftarkan Akun
-                                    </a>
+
+                                    @error('kelasId')
+                                        <div class="invalid-feedback d-block mb-3">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+
+                                    <button type="submit" name="buttonAddMahasiswa"
+                                        class="btn btn-primary btn-user btn-block">Daftarkan Akun</button>
+                                    <button type="reset" class="btn btn-secondary btn-user btn-block">Reset</button>
                                 </form>
                                 <hr>
                                 <div class="text-center">

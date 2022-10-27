@@ -13,26 +13,26 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ $title === 'Bank Soal' ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('admin') ? 'active' : '' }}">
         <a class="nav-link " href="/admin">
             <i class="fas fa-fw fa-database"></i>
             <span>Bank Soal</span></a>
     </li>
 
-    <li class="nav-item {{ $title === 'Jadwal Tes' ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('admin/jadwal') ? 'active' : '' }}">
         <a class="nav-link" href="/admin/jadwal">
             <i class="fas fa-fw fa-calendar"></i>
             <span>Jadwal Tes</span></a>
     </li>
 
-    <li class="nav-item {{ $title === 'Tes Yang Tersedia' ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('user') ? 'active' : '' }}">
         <a class="nav-link" href="/user/">
             <i class="fas fa-fw fa-book"></i>
             <span>Tes Yang Tersedia</span></a>
     </li>
 
 
-    <li class="nav-item {{ $title === 'Jadwal Tes Pengguna' ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('user/jadwal') ? 'active' : '' }}">
         <a class="nav-link" href="/user/jadwal">
             <i class="fas fa-fw fa-calendar"></i>
             <span>Jadwal Tes Pengguna</span></a>

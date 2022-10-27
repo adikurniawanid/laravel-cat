@@ -10,8 +10,11 @@
              </div>
              <div class="modal-body">Pilih "Keluar" untuk mengakhiri sesi saat ini.</div>
              <div class="modal-footer">
-                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                 <a class="btn btn-primary" href="/auth/login">Keluar</a>
+                 <form action="/auth/logout" method="post">
+                     @csrf
+                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                     <button class="btn btn-primary">Keluar</button>
+                 </form>
              </div>
          </div>
      </div>
