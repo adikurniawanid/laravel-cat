@@ -10,6 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        $this->authorize('user');
 
         return view('user/tes-tersedia', [
             "title" => "Tes Yang Tersedia",
@@ -20,6 +21,8 @@ class UserController extends Controller
 
     public function jadwal()
     {
+        $this->authorize('user');
+
         return view('user/jadwal-tes', [
             "title" => "Jadwal Tes Pengguna",
             "tes" =>

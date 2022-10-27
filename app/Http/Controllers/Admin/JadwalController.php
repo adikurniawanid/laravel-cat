@@ -15,6 +15,8 @@ class JadwalController extends Controller
 
     public function index()
     {
+        $this->authorize('admin');
+
         return view('admin/jadwal-tes', [
             "title" => "Jadwal Tes",
             "kategori" => Kategori::all(),
@@ -26,6 +28,8 @@ class JadwalController extends Controller
 
     public function add(Request $request)
     {
+        $this->authorize('admin');
+
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
             'kategoriId' => 'required',

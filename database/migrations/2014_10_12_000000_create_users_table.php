@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('nama');
             $table->string('kelasId');
+            $table->tinyInteger('roleId')->default(1);
             $table->timestamps();
         });
     }

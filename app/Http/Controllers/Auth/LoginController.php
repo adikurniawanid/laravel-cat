@@ -15,12 +15,12 @@ class LoginController extends Controller
         ]);
     }
 
-    public function indexAdmin()
-    {
-        return view('auth/login-admin', [
-            "title" => "Login Admin"
-        ]);
-    }
+    // public function indexAdmin()
+    // {
+    //     return view('auth/login-admin', [
+    //         "title" => "Login Admin"
+    //     ]);
+    // }
 
 
     public function authenticate(Request $request)
@@ -32,7 +32,11 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/user');
+            if (Auth::user()->roleId === 1) {
+                return redirect()->intended('/user');
+            } else if (Auth::user()->roleId === 0) {
+                return redirect()->intended('/admin');
+            }
         }
 
         return back()->with('loginError', 'Username atau password yang dimasukkan salah!');

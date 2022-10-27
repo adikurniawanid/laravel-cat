@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-book-open"></i>
         </div>
@@ -11,36 +11,45 @@
     </a>
 
     <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+    @can('admin')
+        <div class="sidebar-heading">
+            Administrator
+        </div>
+        <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ Request::is('admin') ? 'active' : '' }}">
-        <a class="nav-link " href="/admin">
-            <i class="fas fa-fw fa-database"></i>
-            <span>Bank Soal</span></a>
-    </li>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item {{ Request::is('admin') || $title === 'Bank Soal' ? 'active' : '' }}">
+            <a class="nav-link " href="/admin">
+                <i class="fas fa-fw fa-database"></i>
+                <span>Bank Soal</span></a>
+        </li>
 
-    <li class="nav-item {{ Request::is('admin/jadwal') ? 'active' : '' }}">
-        <a class="nav-link" href="/admin/jadwal">
-            <i class="fas fa-fw fa-calendar"></i>
-            <span>Jadwal Tes</span></a>
-    </li>
+        <li class="nav-item {{ Request::is('admin/jadwal') ? 'active' : '' }}">
+            <a class="nav-link" href="/admin/jadwal">
+                <i class="fas fa-fw fa-calendar"></i>
+                <span>Jadwal Tes</span></a>
+        </li>
+        <hr class="sidebar-divider">
+    @endcan
 
-    <li class="nav-item {{ Request::is('user') ? 'active' : '' }}">
-        <a class="nav-link" href="/user/">
-            <i class="fas fa-fw fa-book"></i>
-            <span>Tes Yang Tersedia</span></a>
-    </li>
+    @can('user')
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item {{ Request::is('user') || $title === 'Tes Yang Tersedia' ? 'active' : '' }}">
+            <a class="nav-link" href="/user/">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Tes Yang Tersedia</span></a>
+        </li>
 
 
-    <li class="nav-item {{ Request::is('user/jadwal') ? 'active' : '' }}">
-        <a class="nav-link" href="/user/jadwal">
-            <i class="fas fa-fw fa-calendar"></i>
-            <span>Jadwal Tes Pengguna</span></a>
-    </li>
+        <li class="nav-item {{ Request::is('user/jadwal') ? 'active' : '' }}">
+            <a class="nav-link" href="/user/jadwal">
+                <i class="fas fa-fw fa-calendar"></i>
+                <span>Jadwal Tes Pengguna</span></a>
+        </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+    @endcan
 
     {{-- <!-- Heading -->
     <div class="sidebar-heading">
