@@ -36,3 +36,9 @@ Route::post('/admin/jadwal', [JadwalController::class, 'add'])->middleware('auth
 // User
 Route::get('/user', [UserController::class, 'index'])->middleware('auth');
 Route::get('/user/jadwal', [UserController::class, 'jadwal'])->middleware('auth');
+
+Route::get('/exam', function () {
+    return view('exam/index', [
+        "title" => "Exam",
+    ]);
+});
