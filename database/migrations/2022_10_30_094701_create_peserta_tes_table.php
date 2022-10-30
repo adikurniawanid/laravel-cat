@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSkorsTable extends Migration
+class CreatePesertaTesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSkorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skor', function (Blueprint $table) {
+        Schema::create('peserta_tes', function (Blueprint $table) {
             $table->id();
-            $table->string('userId');
-            $table->string('testId');
-            $table->integer('skor');
+            $table->bigInteger('userId');
+            $table->bigInteger('testId');
+            $table->integer('skor')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateSkorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skor');
+        Schema::dropIfExists('peserta_tes');
     }
 }
