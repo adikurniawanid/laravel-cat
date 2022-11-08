@@ -40,6 +40,7 @@ Route::post('/admin/soal', [SoalController::class, 'add']);
 // User
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/jadwal', [UserController::class, 'jadwal']);
+Route::post('/user/soal', [UserController::class, 'add']);
 
 Route::get('/exam', function () {
     return view('exam/index', [
