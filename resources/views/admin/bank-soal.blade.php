@@ -20,21 +20,19 @@
                             <tr>
                                 <th>No</th>
                                 <th>Soal</th>
-                                <th>Kelas</th>
                                 <th>Jumlah Soal</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @for ($i = 0; $i < 20; $i++)
+                            @foreach ($soal as $element)
                                 <tr>
-                                    <td>{{ $i + 1 }}</td>
-                                    <td>Kecerdasan Buatan</td>
-                                    <td>REG - L1</td>
-                                    <td>100</td>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $element->nama }}</td>
+                                    <td>{{ $element->jumlahSoal }}</td>
                                     <td></td>
                                 </tr>
-                            @endfor
+                            @endforeach
 
                         </tbody>
                     </table>

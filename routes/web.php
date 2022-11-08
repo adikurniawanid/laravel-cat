@@ -34,6 +34,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/admin', [SoalController::class, 'index']);
 Route::get('/admin/jadwal', [JadwalController::class, 'index']);
 Route::post('/admin/jadwal', [JadwalController::class, 'add']);
+Route::post('/admin/soal', [SoalController::class, 'add']);
 // Route::delete('/admin/jadwal', [AdminController::class, 'deleteJadwal']);
 
 // User

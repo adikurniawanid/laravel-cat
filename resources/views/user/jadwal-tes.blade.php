@@ -12,33 +12,40 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Tanggal</th>
+                                <th>Waktu</th>
+                                <th>Kelas</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </tfoot>
                         <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
+                            @foreach ($tes as $element)
+                                <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $element->nama }}</td>
+                                    <td>{{ $element->tanggal }}</td>
+                                    <td>{{ $element->pukul }}</td>
+                                    <td>{{ $element->kelas }}</td>
+                                    <td>
+                                        <form action="/admin/jadwal/<?= $element->id ?>" method="POST" class="d-inline">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="PUT">
+                                            <input type="hidden" name="id" value="<?= $element->id ?>">
+                                            <button type="submit" class="btn btn-success btn-sm" title="Edit"><i
+                                                    class="fas fa-edit "></i></button>
+                                        </form>
+                                        <form action="/admin/jadwal/<?= $element->id ?>" method="POST" class="d-inline">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete"
+                                                onclick="return confirm('Apakah anda yakin ingin menghapus mahasiswa <?= $element->id ?> ?')"><i
+                                                    class="fas fa-trash "></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

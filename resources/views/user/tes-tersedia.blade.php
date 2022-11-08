@@ -10,7 +10,7 @@
 
         <!-- Content Row -->
         <div class="row">
-            @foreach ($tes as $element)
+            {{-- @foreach ($tes as $element)
                 <div class="col-lg-4">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @endforeach --}}
 
         </div>
     @endsection
