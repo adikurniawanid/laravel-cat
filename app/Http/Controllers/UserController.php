@@ -18,7 +18,9 @@ class UserController extends Controller
         return view('user/tes-tersedia', [
             "title" => "Tes Yang Tersedia",
             "tes" =>
-            DB::table('jadwal_tes_view')->get()
+            DB::table('jadwal_tes_view')
+                ->whereNotIn('id', DB::table('peserta_tes')->select('testId')->where('userId', '=', auth()->user()->id))
+                ->get()
         ]);
     }
 
