@@ -10,6 +10,13 @@
 
         <!-- Content Row -->
         <div class="row">
+            @if (count($tes) === 0)
+                <div class="card-body">
+                    <div class="alert alert-danger" role="alert">
+                        Belum ada test yang berlangsung
+                    </div>
+                </div>
+            @endif
             @foreach ($tes as $element)
                 <div class="col-lg-4">
                     <div class="card shadow mb-4">
