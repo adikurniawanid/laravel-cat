@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Kelas;
-use App\Models\Kategori;
 use App\Models\PesertaTes;
 use Illuminate\Support\Facades\DB;
 
@@ -58,4 +56,13 @@ class UserController extends Controller
             return redirect()->back()->with('failed', 'Tes Gagal ditambahkan');
         }
     }
+
+    // public function get(Tes $id)
+    // {
+    //     $this->authorize('user');
+
+    //     return view('user.detail-tes', [
+    //         "title" => "Exam",
+    //     ]);
+    // }
 }

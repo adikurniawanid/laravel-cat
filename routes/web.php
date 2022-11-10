@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SoalController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +43,4 @@ Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/jadwal', [UserController::class, 'jadwal']);
 Route::post('/user/soal', [UserController::class, 'add']);
 
-Route::get('/exam', function () {
-    return view('exam/index', [
-        "title" => "Exam",
-    ]);
-});
+Route::get('/exam/{tes:id}', [ExamController::class, 'index']);

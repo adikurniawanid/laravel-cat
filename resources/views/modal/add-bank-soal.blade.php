@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label>File Excel</label>
                         <input autocomplete="off" class="form-control" required type="file" name="file"
-                            id="File" placeholder="Masukkan File Excel..." />
+                            id="File" placeholder="Masukkan File Excel..." accept=".xls" />
                     </div>
 
                     <div class="modal-footer">

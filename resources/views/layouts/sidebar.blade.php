@@ -41,7 +41,7 @@
         </li>
 
 
-        <li class="nav-item {{ Request::is('user/jadwal') ? 'active' : '' }}">
+        <li class="nav-item {{ Request::is('user/jadwal*') ? 'active' : '' }}">
             <a class="nav-link" href="/user/jadwal">
                 <i class="fas fa-fw fa-calendar"></i>
                 <span>Jadwal Tes Pengguna</span></a>

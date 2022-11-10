@@ -1,4 +1,5 @@
 @include('layouts.head')
+{{-- @dd($soal) --}}
 
 <body id="page-top">
 
@@ -23,22 +24,22 @@
             <li class="nav-item">
                 <table class="m-3">
                     <tr>
+                        <?php $page_button = 1; ?>
+                        @for ($i = 1; $i <= count($soal); $i++)
+                            <td style='text-align: center;'>
+                                <button class='jump btn btn-block btn-outline-light' id='button_{{ $page_button }}'
+                                    name='$page_button' type='button'>
+                                    {{ $page_button }}
+                                </button>
+                            </td>
+                            @if ($page_button % 5 == 0)
+                    </tr>
+                    <tr>
+                        @endif
                         <?php
-                    $page_button = 1;
-                    for ($i = 1; $i <= 50; $i++) : ?>
-                        <td style='text-align: center;'>
-                            <button class='jump btn btn-block btn-outline-light' id='button_{{ $page_button }}'
-                                name='$page_button' type='button'>
-                                <?= $page_button ?>
-                            </button>
-                        </td>
-                        <?php
-                        if ($page_button % 5 == 0) {
-                            echo "</tr>";
-                            echo "<tr>";
-                        }
                         $page_button++;
-                    endfor ?>
+                        ?>
+                        @endfor
                     </tr>
                 </table>
             </li>
@@ -57,7 +58,39 @@
                     <!-- Topbar Navbar -->
                     <ul class="ml-auto mr-2 mt-auto mb-auto">
                         <h5>
-                            10:10:10s
+                            <!-- COUNTDOWN-->
+                            <script>
+                                CountDownTimer('countdown');
+
+                                function CountDownTimer(id) {
+                                    let end = new Date('{{ $tes->waktuSelesai }}');
+                                    let _second = 1000;
+                                    let _minute = _second * 60;
+                                    let _hour = _minute * 60;
+                                    let _day = _hour * 24;
+                                    let timer;
+
+                                    function showRemaining() {
+                                        let now = new Date();
+                                        let distance = end - now;
+                                        if (distance < 0) {
+                                            clearInterval(timer);
+                                            document.getElementById(id).innerHTML = '<b>Tes Telah Berakhir</b> ';
+                                            window.location = "/user/jadwal"
+                                        }
+                                        let days = Math.floor(distance / _day);
+                                        let hours = Math.floor((distance % _day) / _hour);
+                                        let minutes = Math.floor((distance % _hour) / _minute);
+                                        let seconds = Math.floor((distance % _minute) / _second);
+
+                                        document.getElementById(id).innerHTML = hours + ' Jam ';
+                                        document.getElementById(id).innerHTML += minutes + ' Menit ';
+                                        document.getElementById(id).innerHTML += seconds + ' Detik';
+                                    }
+                                    timer = setInterval(showRemaining, 1000);
+                                }
+                            </script>
+                            <div id="countdown">
                         </h5>
                     </ul>
 
@@ -153,4 +186,6 @@
         </div>
         <!-- End of Content Wrapper -->
     </div>
+
+
     @include('layouts.tail')
